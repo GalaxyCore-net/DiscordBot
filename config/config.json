@@ -1,0 +1,45 @@
+{
+    "debug": true,
+    "prefix": "!",
+    "description": "GameSucht.net » ControlBot",
+    "rich-presence": {
+        "states": [
+            {
+                "message": "auf GameSucht.net",
+                "status": "online",
+                "afk": false,
+                "delay": 10
+            },
+            {
+                "message": "nicht auf Sulentia.com",
+                "status": "online",
+                "afk": false,
+                "delay": 1
+            }
+        ]
+    },
+    "server-status-channel": 868588687779328010,
+    "minecraft": {
+        "server-host": "127.0.0.1",
+        "server-port": 1234,
+        "server-password": "abcd",
+        "console-channel": 868589314760667216,
+        "prefix": ""
+    },
+    "extensions": [
+        "clear",
+        "minecraft",
+        "join_leave_message",
+        "team",
+        "giveaway",
+        "serverinfo"
+    ],
+    "join-message-channel": 868609411659214889,
+    "leave-message-channel": 868609411659214889,
+    "rules-channel": 868609369795862598,
+    "server-name": "GalaxyCore.net",
+    "leitung-commands": 871513648521166878,
+    "up-down-ranks": 871514413734166538,
+    "discord-admin-role": 829029894397755503,
+    "event-channel": 871521675735347292
+}
