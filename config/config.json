@@ -33,7 +33,8 @@
         "team",
         "giveaway",
         "serverinfo",
-        "ping"
+        "ping",
+        "support_notify"
     ],
     "join-message-channel": 868609411659214889,
     "leave-message-channel": 868609411659214889,
@@ -42,5 +43,8 @@
     "leitung-commands": 871513648521166878,
     "up-down-ranks": 871514413734166538,
     "discord-admin-role": 829029894397755503,
-    "event-channel": 871521675735347292
+    "event-channel": 871521675735347292,
+    "team-commands": 871528887622987896,
+    "supportnotify-role": 871529259443839007,
+    "supportnotify-channel": 871530235189936138
 }
