@@ -35,7 +35,8 @@
         "serverinfo",
         "ping",
         "support_notify",
-        "suggestion"
+        "suggestion",
+        "music"
     ],
     "join-message-channel": 868609411659214889,
     "leave-message-channel": 868609411659214889,
@@ -48,5 +49,6 @@
     "team-commands": 871528887622987896,
     "supportnotify-role": 871529259443839007,
     "supportnotify-channel": 871530235189936138,
-    "suggestion-channel": 871532284430401616
+    "suggestion-channel": 871532284430401616,
+    "music-commands": 871536635244867605
 }

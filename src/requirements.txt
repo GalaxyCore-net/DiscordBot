@@ -1,3 +1,4 @@
 discord
 requests
 mcrcon
+youtube_dl
