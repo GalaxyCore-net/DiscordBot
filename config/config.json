@@ -32,7 +32,8 @@
         "join_leave_message",
         "team",
         "giveaway",
-        "serverinfo"
+        "serverinfo",
+        "ping"
     ],
     "join-message-channel": 868609411659214889,
     "leave-message-channel": 868609411659214889,

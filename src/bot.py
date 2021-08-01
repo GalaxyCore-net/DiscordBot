@@ -100,14 +100,6 @@ if __name__ == "__main__":
 
 # On message automod
 
-# Team Command was der auch immer kann 108
-
-# Giveaway
-
-# Serverinfo
-
-# Ping
-
 # SupportNotify
 
 # Support Notify people on Join in warteraum
