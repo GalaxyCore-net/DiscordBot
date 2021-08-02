@@ -21,11 +21,14 @@
         "prefix": ""
     },
     "extensions": [
+        "automod",
+        "autoroles",
         "clear",
         "help",
         "join_leave_message",
         "minecraft",
         "ping",
+        "reaction_roles",
         "serverinfo",
         "support_notify",
         "team"
@@ -38,5 +41,22 @@
     "up-down-ranks": 871514413734166538,
     "team-commands": 871528887622987896,
     "supportnotify-role": 871529259443839007,
-    "supportnotify-channel": 871530235189936138
+    "supportnotify-channel": 871530235189936138,
+    "automod": [
+        "nico"
+    ],
+    "autoroles": [
+        712337598097391697
+    ],
+    "reaction-roles": [
+        {
+            "message-id": 871800773544116265,
+            "roles": [
+                {
+                    "emoji": "\ud83d\udc4d",
+                    "role": 712337598097391697
+                }
+            ]
+        }
+    ]
 }
