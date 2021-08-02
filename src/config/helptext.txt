@@ -1,15 +1,3 @@
-!help                           | Zeigt dir die Commands an
-!serverinfo                     | Zeigt dir die Informationen zum Server
-!play <Songname>                | Spiele einen Song ab
-!repeat                         | Du kannst den Song erneut abspielen
-!reset                          | Löscht den Loop
-!restart                        | Restarted den Loop
-!stop                           | Stoppt das Lied das gerade spielt
-!leave                          | Disconnecte den Bot aus deinem Channel
-!resume                         | Weiterspielen nach der Pause
-!songinfo                       | Zeigt Informationen zum aktuellen Song
-!join                           | Der Musikbot joint deinem Channel
-!volume <Level>                 | Ändert die Lautstärke (1-100)
-!vorschlag <Ebene> <Vorschlag>  | Reiche einen Vorschlag ein
-!ping                           | Zeige den Ping des Bots an
-!search <Query>                 | Mach eine Google-Suche
+!help                   | Zeige diese Nachricht an
+!ping                   | Pong!
+!serverinfo             | Zeige dir die Information zum Server an
