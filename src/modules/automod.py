@@ -10,13 +10,13 @@ class Automod(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        await self.process_message(message)
-        await message.delete()
+        if await self.process_message(message):
+            await message.delete()
 
     @commands.Cog.listener()
     async def on_message_edit(self, before: discord.Message, after: discord.Message):
-        await self.process_message(after)
-        await after.edit(content=before.content, embed=before.embed)
+        if await self.process_message(after):
+            await after.edit(content=before.content, embed=before.embed)
 
     @staticmethod
     async def process_message(message: discord.Message):
@@ -27,6 +27,8 @@ class Automod(commands.Cog):
                                                   "Genauer Wortlaut: \n"
                                                   f"{message.content}\n"
                                                   "Bitte unterlasse das!")
+                return True
+        return False
 
 
 def setup(_bot):

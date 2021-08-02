@@ -1,7 +1,7 @@
 {
     "debug": true,
     "prefix": "!",
-    "description": "GalaxyCore.net » ControlBot",
+    "description": "GalaxyCore.net \u00bb ControlBot",
     "rich-presence": {
         "states": [
             {
@@ -28,6 +28,7 @@
         "join_leave_message",
         "minecraft",
         "ping",
+        "reaction_roles",
         "serverinfo",
         "support_notify",
         "team"
@@ -46,5 +47,16 @@
     ],
     "autoroles": [
         712337598097391697
+    ],
+    "reaction-roles": [
+        {
+            "message-id": 871800773544116265,
+            "roles": [
+                {
+                    "emoji": "\ud83d\udc4d",
+                    "role": 712337598097391697
+                }
+            ]
+        }
     ]
 }
