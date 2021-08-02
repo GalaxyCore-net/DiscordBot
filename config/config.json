@@ -28,15 +28,17 @@
     },
     "extensions": [
         "clear",
-        "minecraft",
-        "join_leave_message",
-        "team",
         "giveaway",
-        "serverinfo",
+        "help",
+        "join_leave_message",
+        "minecraft",
+        "modules",
+        "music",
         "ping",
-        "support_notify",
+        "serverinfo",
         "suggestion",
-        "music"
+        "support_notify",
+        "team"
     ],
     "join-message-channel": 868609411659214889,
     "leave-message-channel": 868609411659214889,
