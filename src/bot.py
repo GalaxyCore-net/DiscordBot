@@ -12,7 +12,11 @@ from modules import minecraft
 
 intents = discord.Intents.all()
 
-bot = commands.Bot(command_prefix=config["prefix"], description=config["description"], intents=intents)
+bot = commands.Bot(command_prefix=config["prefix"], description=config["description"], intents=intents, help_command=None)
+
+logger = logging.getLogger("main")
+
+guilds = []
 
 
 class Application:
@@ -23,9 +27,9 @@ class Application:
 
     __cogs = []
 
-    def __init__(self, discord_bot, bot_token):
+    def __init__(self, discord_bot, bot_token, _logger):
         self.bot = discord_bot
-        self.logger = logging.getLogger("main")
+        self.logger = _logger
         self.logger.setLevel(logging.DEBUG if config["debug"] else logging.INFO)
 
         if not os.path.isfile("config/config.json"):
@@ -38,6 +42,7 @@ class Application:
 
         @self.bot.event
         async def on_ready():
+            global guilds
             self.logger.info(f"Logged in as {self.bot.user.name}#{self.bot.user.discriminator}")
             self.logger.debug("Initializing Update Task")
             bot.loop.create_task(self.update_task())
@@ -45,6 +50,7 @@ class Application:
             self.logger.debug("Initializing Minecraft Server Status Task")
             bot.loop.create_task(self.server_status_task())
             self.logger.info("Initialized Minecraft Server Status Task")
+            guilds = bot.guilds
 
         bot.run(bot_token)
 
@@ -55,7 +61,7 @@ class Application:
         for extension in config["extensions"]:
             self.logger.debug(f"Loading Extension {extension}")
 
-            __import__(f"modules.{extension}", fromlist=["setup"]).setup(bot)
+            bot.load_extension(f"modules.{extension}")
 
             self.logger.info(f"Loaded Extension {extension}")
         self.logger.info(f"Loaded {len(self.__cogs)} Extensions in total")
@@ -96,19 +102,9 @@ logging.basicConfig(
 token = open("config/token.txt", "r").read()
 
 if __name__ == "__main__":
-    Application(bot, token)
+    Application(bot, token, logger)
 
 # On message automod
-
-# SupportNotify
-
-# Support Notify people on Join in warteraum
-
-# Vorschlag
-
-# Clear Command
-
-# Google Search
 
 # Autoroles
 

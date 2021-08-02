@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from bot import config, bot
+from bot import config, bot, logger
 
 
 class SupportNotify(commands.Cog):
@@ -22,7 +22,7 @@ class SupportNotify(commands.Cog):
             if role.id == config["supportnotify-role"]:
                 has_role = True
 
-        guild = bot.get_guild(ctx.guild.id)
+        guild = ctx.guild
 
         if has_role:
             await author.remove_roles(guild.get_role(config["supportnotify-role"]))
@@ -39,7 +39,7 @@ class SupportNotify(commands.Cog):
                 embed.title = f"{member.display_name} benötigt Support!"
 
                 role = member.guild.get_role(config["supportnotify-role"])
-                await bot.get_channel(config["team-commands"]).send(role.mention, embed=embed)
+                await after.channel.guild.get_channel(config["team-commands"]).send(role.mention, embed=embed)
 
 
 def setup(_bot):

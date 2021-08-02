@@ -19,7 +19,7 @@ class Team(commands.Cog):
         ok_embed.colour = discord.Color(0x00ff00)
 
         if len(args) == 2:
-            teamnotify = bot.get_channel(config["up-down-ranks"])
+            teamnotify = ctx.guild.get_channel(config["up-down-ranks"])
 
             if args[0] == "quit":
                 embed = discord.Embed()
@@ -48,9 +48,8 @@ class Team(commands.Cog):
                 embed.colour = discord.Color(0xff0000)
 
                 await ctx.send(embed=embed)
-                await ctx.send(embed=ok_embed)
         elif len(args) == 3:
-            teamnotify = bot.get_channel(config["up-down-ranks"])
+            teamnotify = ctx.guild.get_channel(config["up-down-ranks"])
 
             if args[0] == "new":
                 embed = discord.Embed()
@@ -62,7 +61,7 @@ class Team(commands.Cog):
 
                 await teamnotify.send(embed=embed)
                 await ctx.send(embed=ok_embed)
-            elif args[0] == "uprank":
+            elif args[0] == "promote":
                 embed = discord.Embed()
                 embed.title = f"Teamupdate - {args[1]}"
                 embed.description = f"Neuigkeit von **{ctx.author.mention}**\n" \
@@ -72,7 +71,7 @@ class Team(commands.Cog):
 
                 await teamnotify.send(embed=embed)
                 await ctx.send(embed=ok_embed)
-            elif args[0] == "downrank":
+            elif args[0] == "demote":
                 embed = discord.Embed()
                 embed.title = f"Teamupdate - {args[1]}"
                 embed.description = f"Neuigkeit von **{ctx.author.mention}**\n" \
@@ -85,14 +84,14 @@ class Team(commands.Cog):
             else:
                 embed = discord.Embed()
                 embed.title = f"{config['prefix']}team"
-                embed.description = f"Verwende {config['prefix']}team <new|uprank|downrank> <name> <rang>"
+                embed.description = f"Verwende {config['prefix']}team <new|promote|demote> <name> <rang>"
                 embed.colour = discord.Color(0xff0000)
 
                 await ctx.send(embed=embed)
         else:
             embed = discord.Embed()
             embed.title = f"{config['prefix']}team"
-            embed.description = f"Verwende {config['prefix']}team <new|uprank|downrank|quit|kick> <name> [rang]"
+            embed.description = f"Verwende {config['prefix']}team <new|promote|demote|quit|kick> <name> [rang]"
             embed.colour = discord.Color(0xff0000)
 
             await ctx.send(embed=embed)

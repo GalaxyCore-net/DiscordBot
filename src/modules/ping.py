@@ -1,17 +1,15 @@
 import discord
 from discord.ext import commands
 
-from bot import bot
-
 
 class Ping(commands.Cog):
     def __init(self, _bot):
-        self.bot = _bot
+        self.bot: discord.ext.commands.Bot = _bot
 
     @commands.command()
     async def ping(self, ctx):
         embed = discord.Embed()
-        embed.title = f"{str(round(bot.latency * 1000))}ms"
+        embed.title = "Pong!"
         await ctx.send(embed=embed)
 
 
