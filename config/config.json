@@ -22,6 +22,7 @@
     },
     "extensions": [
         "automod",
+        "autoroles",
         "clear",
         "help",
         "join_leave_message",
@@ -42,5 +43,8 @@
     "supportnotify-channel": 871530235189936138,
     "automod": [
         "nico"
+    ],
+    "autoroles": [
+        712337598097391697
     ]
 }

@@ -104,8 +104,4 @@ token = open("config/token.txt", "r").read()
 if __name__ == "__main__":
     Application(bot, token, logger)
 
-# On message automod
-
-# Autoroles
-
 # Reaction Roles
