@@ -1,20 +1,14 @@
 {
     "debug": true,
     "prefix": "!",
-    "description": "GameSucht.net » ControlBot",
+    "description": "GalaxyCore.net » ControlBot",
     "rich-presence": {
         "states": [
             {
-                "message": "auf GameSucht.net",
+                "message": "auf GalaxyCore.net",
                 "status": "online",
                 "afk": false,
                 "delay": 10
-            },
-            {
-                "message": "nicht auf Sulentia.com",
-                "status": "online",
-                "afk": false,
-                "delay": 1
             }
         ]
     },
@@ -27,16 +21,13 @@
         "prefix": ""
     },
     "extensions": [
+        "automod",
         "clear",
-        "giveaway",
         "help",
         "join_leave_message",
         "minecraft",
-        "modules",
-        "music",
         "ping",
         "serverinfo",
-        "suggestion",
         "support_notify",
         "team"
     ],
@@ -46,11 +37,10 @@
     "server-name": "GalaxyCore.net",
     "leitung-commands": 871513648521166878,
     "up-down-ranks": 871514413734166538,
-    "discord-admin-role": 829029894397755503,
-    "event-channel": 871521675735347292,
     "team-commands": 871528887622987896,
     "supportnotify-role": 871529259443839007,
     "supportnotify-channel": 871530235189936138,
-    "suggestion-channel": 871532284430401616,
-    "music-commands": 871536635244867605
+    "automod": [
+        "nico"
+    ]
 }
