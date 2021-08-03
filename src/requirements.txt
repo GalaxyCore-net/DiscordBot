@@ -1,5 +1,6 @@
 discord
 requests
 mcrcon
+mcstatus
 youtube_dl
 PyNaCl

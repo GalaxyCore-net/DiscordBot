@@ -5,10 +5,10 @@ import os.path
 
 import discord
 from discord.ext import commands
+from mcstatus import MinecraftServer
 
-from modules import modules
 from config import config
-from modules import minecraft
+from modules import modules
 
 intents = discord.Intents.all()
 
@@ -90,7 +90,16 @@ class Application:
     @staticmethod
     async def server_status_task():
         while True:
-            await minecraft.Minecraft(bot).update_server_status()
+            # noinspection PyBroadException
+            try:
+                server = MinecraftServer.lookup("galaxycore.net")
+                server.status()
+                channel = discord.VoiceChannel = bot.get_channel(config["server-status-channel"])
+                await channel.edit(name="» Server-Status: Online")
+            except:
+                channel = discord.VoiceChannel = bot.get_channel(config["server-status-channel"])
+                await channel.edit(name="» Server-Status: Offline")
+
             await asyncio.sleep(5)
 
 
