@@ -5,3 +5,5 @@ services:
         build: src
         volumes:
         -   ./src:/src/app
+        ports:
+            - "6:1337"
