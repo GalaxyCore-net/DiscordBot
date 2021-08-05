@@ -6,4 +6,4 @@ services:
         volumes:
         -   ./src:/src/app
         ports:
-            - "6:1337"
+            - "9660:9660"

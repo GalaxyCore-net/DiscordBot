@@ -2,6 +2,7 @@ import asyncio
 import json
 import logging
 import os.path
+import threading
 
 import discord
 from discord.ext import commands
@@ -9,6 +10,7 @@ from mcstatus import MinecraftServer
 
 from config import config
 from modules import modules
+from ping import ping_server
 
 intents = discord.Intents.all()
 
@@ -51,6 +53,10 @@ class Application:
             bot.loop.create_task(self.server_status_task())
             self.logger.info("Initialized Minecraft Server Status Task")
             guilds = bot.guilds
+
+            self.logger.info("Starting Ping Server")
+            self.pingthread = threading.Thread(target=ping_server, args=(logging.getLogger("pingsrv"),))
+            self.pingthread.start()
 
         bot.run(bot_token)
 
@@ -112,5 +118,3 @@ token = open("config/token.txt", "r").read()
 
 if __name__ == "__main__":
     Application(bot, token, logger)
-
-# Reaction Roles

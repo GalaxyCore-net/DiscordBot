@@ -42,21 +42,9 @@
     "team-commands": 871528887622987896,
     "supportnotify-role": 871529259443839007,
     "supportnotify-channel": 871530235189936138,
-    "automod": [
-        "nico"
-    ],
+    "automod": [],
     "autoroles": [
-        712337598097391697
+        
     ],
-    "reaction-roles": [
-        {
-            "message-id": 871800773544116265,
-            "roles": [
-                {
-                    "emoji": "\ud83d\udc4d",
-                    "role": 712337598097391697
-                }
-            ]
-        }
-    ]
+    "reaction-roles": []
 }
