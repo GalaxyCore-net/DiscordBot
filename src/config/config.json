@@ -27,6 +27,7 @@
         "help",
         "join_leave_message",
         "minecraft",
+        "moderation",
         "ping",
         "reaction_roles",
         "serverinfo",
@@ -46,5 +47,9 @@
     "autoroles": [
         
     ],
-    "reaction-roles": []
+    "reaction-roles": [],
+    "moderation-role": 873659608793772043,
+    "permaban-role": 873659429445308468,
+    "mod-log": 868589314760667216,
+    "muted-role": 873888527404892160
 }

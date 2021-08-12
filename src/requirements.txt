@@ -4,3 +4,5 @@ mcrcon
 mcstatus
 youtube_dl
 PyNaCl
+mariadb
+sqlalchemy

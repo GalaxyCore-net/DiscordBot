@@ -7,3 +7,12 @@ services:
         -   ./src:/src/app
         ports:
             - "9660:9660"
+        links:
+            -   db
+    db:
+        image: mariadb:latest
+        ports:
+            -   "3307:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=iusearchbtw
+            - MYSQL_DATABASE=root

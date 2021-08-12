@@ -44,7 +44,6 @@ class Application:
 
         @self.bot.event
         async def on_ready():
-            global guilds
             self.logger.info(f"Logged in as {self.bot.user.name}#{self.bot.user.discriminator}")
             self.logger.debug("Initializing Update Task")
             bot.loop.create_task(self.update_task())
@@ -52,11 +51,18 @@ class Application:
             self.logger.debug("Initializing Minecraft Server Status Task")
             bot.loop.create_task(self.server_status_task())
             self.logger.info("Initialized Minecraft Server Status Task")
+            global guilds
             guilds = bot.guilds
 
             self.logger.info("Starting Ping Server")
             self.pingthread = threading.Thread(target=ping_server, args=(logging.getLogger("pingsrv"),))
             self.pingthread.start()
+
+            self.logger.info("Creating Tables")
+            from database.models import create_all
+            create_all()
+            self.logger.info("Starting Tempban/Mute Thread")
+            __import__("modules.moderation", fromlist=["start_thread"]).start_thread(guilds)
 
         bot.run(bot_token)
 
