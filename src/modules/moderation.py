@@ -79,8 +79,6 @@ class Moderation(commands.Cog):
                     add = _time * 60 * 60 * 24 * 7
                 elif unit == "y":
                     add = 31556926
-                if add > 31556926:
-                    add = 31556926
                 expires = time.time() + add
 
                 session = sessionmaker(bind=engine, autocommit=True, autoflush=True)()
