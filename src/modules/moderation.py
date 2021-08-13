@@ -7,7 +7,7 @@ from discord.ext import commands
 from sqlalchemy.orm import sessionmaker
 
 import bot
-from bot import config
+from bot import config, logger
 from database import engine
 from database.models import MutesModel, BanModel
 from utils.math import is_int
@@ -125,7 +125,7 @@ class Moderation(commands.Cog):
     async def tempban(self, ctx, member: discord.Member, _time, unit, *, reason="Fehlverhalten"):
         if has_role(member=ctx.author, role=config["moderation-role"]):
 
-            if is_int(time):
+            if is_int(_time):
 
                 embed = discord.Embed()
 
@@ -198,6 +198,8 @@ class Moderation(commands.Cog):
 
             if is_int(member_id):
 
+                member_id = int(member_id)
+
                 banned_users = await ctx.guild.bans()
 
                 for ban_entry in banned_users:
@@ -269,6 +271,16 @@ class Moderation(commands.Cog):
 
             await member.send(embed=embed)
 
+            session = sessionmaker(bind=engine, autocommit=True, autoflush=True)()
+            session.begin()
+            session.query(MutesModel) \
+                .filter(MutesModel.userid == str(member.id)) \
+                .filter(MutesModel.guildid == str(ctx.guild.id)) \
+                .delete()
+            session.commit()
+            session.flush()
+            session.close()
+
             embed = discord.Embed()
             embed.title = f"Der User {member.name}#{member.discriminator} wurde entmutet"
             embed.colour = discord.Color(0x00ff00)
@@ -318,7 +330,7 @@ async def unmute_ban_async():
                 session.flush()
                 session.close()
         for ban in session.query(BanModel).all():
-            if float(ban.expires) < time.time():
+            if time.time() > float(ban.expires) > 0:
                 guild = bot.bot.get_guild(id=int(ban.guildid))
                 for _guild in guilds:
                     if _guild.id == int(ban.guildid) and not guild:
@@ -326,12 +338,13 @@ async def unmute_ban_async():
                 banned_users = await guild.bans()
                 for ban_entry in banned_users:
                     user = ban_entry.user
-                    if user.id == ban.userid:
+                    if user.id == int(ban.userid):
+                        logger.info(f"REM BAN »» {user.name}#{user.discriminator}")
                         await guild.unban(user)
 
                         session.delete(ban)
                         session.commit()
-                        session.lush()
+                        session.flush()
                         session.close()
         await asyncio.sleep(5)
         if exit_flag:

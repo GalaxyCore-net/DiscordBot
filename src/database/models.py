@@ -13,12 +13,12 @@ class MutesModel(Base):
 
 
 class BanModel(Base):
-    __tablename__ = "tempbans"
+    __tablename__ = "bans"
 
     id = Column(Integer, primary_key=True)
     userid = Column(String(128))
     guildid = Column(String(128))
-    expires = Column(Float)
+    expires = Column(String(128))
     reason = Column(String(128))
 
 
