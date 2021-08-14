@@ -3,5 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 engine = create_engine(
-    f"mariadb+mariadbconnector://root:iusearchbtw@db:3306/root?auto_reconnect=true"
+    f"mariadb+mariadbconnector://root:iusearchbtw@db:3306/root?auto_reconnect=true",
+    pool_size=32,
+    max_overflow=0
 )
