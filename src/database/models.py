@@ -29,5 +29,12 @@ class BadWordsModel(Base):
     word = Column(String(512))
 
 
+class AutoRolesModel(Base):
+    __tablename__ = "autoroles"
+
+    id = Column(Integer, primary_key=True)
+    roleid = Column(String(128))
+
+
 def create_all():
     Base.metadata.create_all(bind=engine)

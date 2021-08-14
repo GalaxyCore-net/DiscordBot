@@ -1,11 +1,9 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands import has_role, has_permissions
-
-from bot import logger
-
+from discord.ext.commands import has_permissions
 from sqlalchemy.orm import sessionmaker
 
+from bot import logger
 from database import engine
 from database.models import BadWordsModel
 
