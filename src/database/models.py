@@ -36,5 +36,14 @@ class AutoRolesModel(Base):
     roleid = Column(String(128))
 
 
+class ReactionRolesModel(Base):
+    __tablename__ = "reactionroles"
+
+    id = Column(Integer, primary_key=True)
+    messageid = Column(String(128))
+    emoji = Column(String(128))
+    roleid = Column(String(128))
+
+
 def create_all():
     Base.metadata.create_all(bind=engine)
