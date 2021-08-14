@@ -1,7 +1,12 @@
 import discord
 from discord.ext import commands
 
-from bot import config, logger
+from bot import logger
+
+from sqlalchemy.orm import sessionmaker
+
+from database import engine
+from database.models import BadWordsModel
 
 
 class Automod(commands.Cog):
@@ -20,8 +25,11 @@ class Automod(commands.Cog):
 
     @staticmethod
     async def process_message(message: discord.Message):
-        for bad_word in config["automod"]:
-            if bad_word in message.content.lower():
+        session = sessionmaker(bind=engine, autocommit=True, autoflush=True)()
+        session.begin()
+        words = session.query(BadWordsModel).all()
+        for bad_word in words:
+            if bad_word.word in message.content.lower():
                 logger.info(f"{message.author.name} wrote the forbidden word '{bad_word}'")
                 await message.author.send(content="Du hast ein schlimmes Wort geschrieben!\n"
                                                   "Genauer Wortlaut: \n"

@@ -22,5 +22,12 @@ class BanModel(Base):
     reason = Column(String(128))
 
 
+class BadWordsModel(Base):
+    __tablename__ = "bad_words"
+
+    id = Column(Integer, primary_key=True)
+    word = Column(String(512))
+
+
 def create_all():
     Base.metadata.create_all(bind=engine)
